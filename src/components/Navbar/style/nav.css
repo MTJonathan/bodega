@@ -1,8 +1,16 @@
+.active-link{
+    color: #af7ac5 !important;
+    font-weight: bold;
+}
 .nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+}
+.nav header h3{
+    font-size: 32px;
 }
 
 .nav ul {
