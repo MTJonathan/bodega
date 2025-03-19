@@ -13,10 +13,8 @@ const AgregarCliente = ({
   setApellido,
   telefono,
   setTelefono,
-  id
+  id,
 }) => {
-  
-
   const agregarCliente = (e) => {
     e.preventDefault();
     addClient(nombre, apellido, telefono);
@@ -36,7 +34,9 @@ const AgregarCliente = ({
   };
   return (
     <dialog className="dialogAgregar" ref={refDialog} closedby="any">
-      <h2>{edidAdd ? "Editar Cliente" : "Agregar Cliente"}</h2>
+      <header>
+        <h2>{edidAdd ? "Editar Cliente" : "Agregar Cliente"}</h2>
+      </header>
       <form>
         <label htmlFor="nombre">Nombre:</label>
         <input
@@ -58,7 +58,7 @@ const AgregarCliente = ({
         />
         <label htmlFor="telefono">Telefono:</label>
         <input
-          type="text"
+          type="tel"
           id="telefono"
           name="telefono"
           value={telefono}
@@ -71,9 +71,10 @@ const AgregarCliente = ({
           <button onClick={agregarCliente}>Agregar</button>
         )}
       </form>
-      <form method="dialog" className="cerrar">
-        <button>Cerrar</button>
-      </form>
+
+      <button onClick={dialogClose} className="cerrar">
+        Cerrar
+      </button>
     </dialog>
   );
 };
