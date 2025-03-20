@@ -27,6 +27,7 @@
 .table td {
   font-size: 18px;
   border: 2px solid #fff;
+  padding: 10px;
 }
 
 .table .acciones {

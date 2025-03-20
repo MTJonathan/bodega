@@ -2,6 +2,7 @@ import Nav from "../Navbar/Nav";
 import "./productos.css";
 import { useDatabaseProduct } from "../database/productos";
 import AgregarProducto from "./AgregarProducto";
+import EliminarCliente from "../Clientes/EliminarCliente";
 import { useState, useRef } from "react";
 
 const Productos = () => {
@@ -21,10 +22,13 @@ const Productos = () => {
   const OpenDialog = () => productRef.current.showModal();
   const CloseDialog = () => productRef.current.close();
 
+  const OpenDialogDelete = () => productRefEliminar.current.showModal();
+  const CloseDialogDelete = () => productRefEliminar.current.close();
+
   const OpenDialogAgregar = () => {
     setProducto("");
-    setPrecio(null);
-    setStock(null);
+    setPrecio("");
+    setStock("");
     setEditAdd(false);
     OpenDialog();
   };
@@ -36,6 +40,12 @@ const Productos = () => {
     setPrecio(producto.precio);
     setStock(producto.stock);
     OpenDialog();
+  };
+
+  const OpenDialogEliminar = (producto) => {
+    setId(producto.id);
+    setProducto(producto.producto);
+    OpenDialogDelete();
   };
   return (
     <main className="MainProductos">
@@ -57,12 +67,23 @@ const Productos = () => {
           dialogClose={CloseDialog}
           edidAdd={editAdd}
         />
+        <EliminarCliente
+          refEliminar={productRefEliminar}
+          deleteProduct={deleteProduct}
+          dialogClose={CloseDialogDelete}
+          deleteClient={deleteProduct}
+          id={id}
+          nombre={producto}
+          setId={setId}
+          setNombre={setProducto}
+        />
       </header>
 
       <section className="Productos">
         <table className="table">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Producto</th>
               <th>Precio</th>
               <th>Stock</th>
@@ -72,12 +93,21 @@ const Productos = () => {
           <tbody>
             {productos.map((producto) => (
               <tr key={producto.id}>
+                <td>{producto.id}</td>
                 <td>{producto.producto}</td>
                 <td>s/. {producto.precio}</td>
                 <td>{producto.stock}</td>
                 <td className="acciones">
-                  <button onClick={() => OpenDialogEdit(producto)}>Editar</button>
-                  <button>Eliminar</button>
+                  <button onClick={() => OpenDialogEdit(producto)}>
+                    Editar
+                  </button>
+                  <button
+                    onClick={() =>
+                      OpenDialogEliminar(producto)
+                    }
+                  >
+                    Eliminar
+                  </button>
                   <button>Detalles</button>
                 </td>
               </tr>

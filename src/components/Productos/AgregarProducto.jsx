@@ -36,6 +36,7 @@ const AgregarProducto = ({
       <h2>{edidAdd ? "Editar Producto" : "Agregar Producto"}</h2>
       <form>
         <label htmlFor="nombre">
+          Producto:{" "}
           <input
             id="nombre"
             name="nombre"
@@ -48,6 +49,7 @@ const AgregarProducto = ({
         </label>
 
         <label htmlFor="precio">
+          Precio:{" "}
           <input
             id="precio"
             name="precio"
@@ -60,6 +62,7 @@ const AgregarProducto = ({
         </label>
 
         <label htmlFor="stock">
+          Stock:{" "}
           <input
             id="stock"
             name="stock"
@@ -76,10 +79,10 @@ const AgregarProducto = ({
         >
           {edidAdd ? "Editar Producto" : "Agregar Producto"}
         </button>
-        <button className="cerrar" onClick={dialogClose}>
-          Cerrar
-        </button>
       </form>
+      <button className="cerrar" onClick={dialogClose}>
+        Cerrar
+      </button>
     </dialog>
   );
 };
