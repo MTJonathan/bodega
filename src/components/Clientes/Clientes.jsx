@@ -76,7 +76,7 @@ const Clientes = () => {
         />
       </header>
 
-      <div className="clientes">
+      <section className="clientes">
         <table className="table">
           <thead>
             <tr>
@@ -107,7 +107,7 @@ const Clientes = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </section>
     </main>
   );
 };

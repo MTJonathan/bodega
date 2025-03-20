@@ -38,33 +38,42 @@ const AgregarCliente = ({
         <h2>{edidAdd ? "Editar Cliente" : "Agregar Cliente"}</h2>
       </header>
       <form>
-        <label htmlFor="nombre">Nombre:</label>
-        <input
-          type="text"
-          id="nombre"
-          name="nombre"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          required
-        />
-        <label htmlFor="apellido">Apellido:</label>
-        <input
-          type="text"
-          id="apellido"
-          name="apellido"
-          value={apellido}
-          onChange={(e) => setApellido(e.target.value)}
-          required
-        />
-        <label htmlFor="telefono">Telefono:</label>
-        <input
-          type="tel"
-          id="telefono"
-          name="telefono"
-          value={telefono}
-          onChange={(e) => setTelefono(e.target.value)}
-          required
-        />
+        <label htmlFor="nombre">
+          Nombre:{" "}
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+          />
+        </label>
+
+        <label htmlFor="apellido">
+          Apellido:{" "}
+          <input
+            type="text"
+            id="apellido"
+            name="apellido"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+            required
+          />
+        </label>
+
+        <label htmlFor="telefono">
+          Telefono:{" "}
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+            required
+          />
+        </label>
+
         {edidAdd ? (
           <button onClick={editarCliente}>Editar</button>
         ) : (
