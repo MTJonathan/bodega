@@ -4,6 +4,7 @@ import { useDatabaseProduct } from "../database/productos";
 import AgregarProducto from "./AgregarProducto";
 import EliminarCliente from "../Clientes/EliminarCliente";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Productos = () => {
   const [id, setId] = useState(null);
@@ -24,6 +25,12 @@ const Productos = () => {
 
   const OpenDialogDelete = () => productRefEliminar.current.showModal();
   const CloseDialogDelete = () => productRefEliminar.current.close();
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/DetallesCliente");
+  };
 
   const OpenDialogAgregar = () => {
     setProducto("");

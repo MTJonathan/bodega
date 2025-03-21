@@ -4,6 +4,7 @@ import { useDatabaseClient } from "../database/clientes";
 import AgregarCliente from "./AgregarCliente";
 import EliminarCliente from "./EliminarCliente";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Clientes = () => {
   const [id, setId] = useState("");
@@ -21,6 +22,14 @@ const Clientes = () => {
   const CloseDialog = () => dialogRef.current.close();
   const OpenDialogDelete = () => dialogRefEliminar.current.showModal();
   const CloseDialogDelete = () => dialogRefEliminar.current.close();
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (cliente) => {
+    navigate(
+      `/DetallesCliente/${cliente.id}/${cliente.nombre}/${cliente.apellido}/${cliente.telefono}`
+    );
+  };
 
   const OpenDialogAgregar = () => {
     setId("");
@@ -101,7 +110,9 @@ const Clientes = () => {
                   <button onClick={() => OpenDialogEliminar(cliente)}>
                     Eliminar
                   </button>
-                  <button>Detalles</button>
+                  <button onClick={() => handleNavigate(cliente)}>
+                    Detalles
+                  </button>
                 </td>
               </tr>
             ))}

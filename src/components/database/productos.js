@@ -4,7 +4,7 @@ import db from "./database";
 export function useDatabaseProduct() {
   const [productos, setProductos] = useState([]);
 
-  const fetchData = async (req, res) => {
+  const fetchData = async () => {
     const data = await db.productos.toArray();
     setProductos(data);
   };
